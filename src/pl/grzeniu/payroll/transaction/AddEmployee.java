@@ -1,4 +1,11 @@
-package pl.grzeniu.payroll;
+package pl.grzeniu.payroll.transaction;
+
+import pl.grzeniu.payroll.Employee;
+import pl.grzeniu.payroll.PayrollDatabase;
+import pl.grzeniu.payroll.classification.PaymentClassification;
+import pl.grzeniu.payroll.method.HoldMethod;
+import pl.grzeniu.payroll.method.PaymentMethod;
+import pl.grzeniu.payroll.schedule.PaymentSchedule;
 
 /**
  * Created by Grzegorz Różycki on 09.05.16

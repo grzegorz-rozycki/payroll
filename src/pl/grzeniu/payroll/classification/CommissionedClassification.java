@@ -1,4 +1,4 @@
-package pl.grzeniu.payroll;
+package pl.grzeniu.payroll.classification;
 
 /**
  * Created by Grzegorz Różycki on 10.05.16

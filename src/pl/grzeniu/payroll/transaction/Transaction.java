@@ -1,4 +1,4 @@
-package pl.grzeniu.payroll;
+package pl.grzeniu.payroll.transaction;
 
 /**
  * Created by Grzegorz Różycki on 08.05.16

@@ -1,5 +1,9 @@
 package pl.grzeniu.payroll;
 
+import pl.grzeniu.payroll.classification.PaymentClassification;
+import pl.grzeniu.payroll.method.PaymentMethod;
+import pl.grzeniu.payroll.schedule.PaymentSchedule;
+
 /**
  * Created by Grzegorz Różycki on 09.05.16
  */

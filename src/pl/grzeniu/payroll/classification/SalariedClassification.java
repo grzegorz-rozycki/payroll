@@ -1,10 +1,10 @@
-package pl.grzeniu.payroll;
+package pl.grzeniu.payroll.classification;
 
 /**
  * Created by Grzegorz Różycki on 10.05.16
  */
 public class SalariedClassification extends PaymentClassification {
-    protected double salary = 0.0;
+    public double salary = 0.0;
 
 
     public SalariedClassification(double salary) {

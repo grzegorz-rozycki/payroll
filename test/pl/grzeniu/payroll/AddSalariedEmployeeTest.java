@@ -1,6 +1,10 @@
 package pl.grzeniu.payroll;
 
 import org.junit.Test;
+import pl.grzeniu.payroll.classification.SalariedClassification;
+import pl.grzeniu.payroll.method.HoldMethod;
+import pl.grzeniu.payroll.schedule.MonthlySchedule;
+import pl.grzeniu.payroll.transaction.AddSalariedEmployee;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
