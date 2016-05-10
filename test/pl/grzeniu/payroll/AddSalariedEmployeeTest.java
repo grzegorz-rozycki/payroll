@@ -2,7 +2,9 @@ package pl.grzeniu.payroll;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
 
 /**
  * Created by grzechu on 08.05.16.
