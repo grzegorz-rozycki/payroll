@@ -18,7 +18,7 @@ public class AddHourlyEmployee extends AddEmployee {
 
     @Override
     protected PaymentClassification makeClassification() {
-        return new HourlyClassification();
+        return new HourlyClassification(hourlyRate);
     }
 
     @Override
