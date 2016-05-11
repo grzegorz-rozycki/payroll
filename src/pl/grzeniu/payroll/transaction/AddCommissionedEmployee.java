@@ -21,7 +21,7 @@ public class AddCommissionedEmployee extends AddEmployee {
 
     @Override
     protected PaymentClassification makeClassification() {
-        return new CommissionedClassification();
+        return new CommissionedClassification(salary, commissionRate);
     }
 
     @Override
