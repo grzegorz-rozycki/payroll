@@ -4,12 +4,13 @@ package pl.grzeniu.payroll;
 import org.junit.Test;
 import pl.grzeniu.payroll.classification.HourlyClassification;
 import pl.grzeniu.payroll.classification.PaymentClassification;
+import pl.grzeniu.payroll.classification.TimeCard;
 import pl.grzeniu.payroll.transaction.AddHourlyEmployeeTransaction;
+import pl.grzeniu.payroll.transaction.TimeCardTransaction;
 
 import java.util.Date;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Created by Grzegorz Różycki on 11.05.16
@@ -22,7 +23,7 @@ public class TimeCardTransactionTest {
         AddHourlyEmployeeTransaction t = new AddHourlyEmployeeTransaction(empId, "Bill", "Home", 15.25);
         t.execute();
 
-        TimeCardTransaction tct = new TimeCardTransaction(new Date(2005, 7, 31), 8.0, empId);
+        TimeCardTransaction tct = new TimeCardTransaction(empId, new Date(2005, 7, 31), 8.0);
         tct.execute();
 
         Employee e = PayrollDatabase.getEmployee(empId);
@@ -35,6 +36,6 @@ public class TimeCardTransactionTest {
         TimeCard tc = hc.getTimeCard(new Date(2005, 7, 31));
 
         assertNotNull(tc);
-        assertEquals(8.0, tc.hours);
+        assertEquals(8.0, tc.hours, 0.01);
     }
 }
