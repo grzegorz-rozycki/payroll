@@ -8,11 +8,11 @@ import pl.grzeniu.payroll.schedule.PaymentSchedule;
 /**
  * Created by Grzegorz Różycki on 10.05.16
  */
-public class AddCommissionedEmployee extends AddEmployee {
+public class AddCommissionedEmployeeTransaction extends AddEmployeeTransaction {
     protected double salary = 0.0;
     protected double commissionRate = 0.0;
 
-    public AddCommissionedEmployee(int empId, String empName, String empAddress, double salary, double commissionRate) {
+    public AddCommissionedEmployeeTransaction(int empId, String empName, String empAddress, double salary, double commissionRate) {
         super(empId, empName, empAddress);
         this.salary = salary;
         this.commissionRate = commissionRate;

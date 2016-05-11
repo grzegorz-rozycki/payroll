@@ -4,7 +4,7 @@ package pl.grzeniu.payroll;
 import org.junit.Test;
 import pl.grzeniu.payroll.classification.HourlyClassification;
 import pl.grzeniu.payroll.classification.PaymentClassification;
-import pl.grzeniu.payroll.transaction.AddHourlyEmployee;
+import pl.grzeniu.payroll.transaction.AddHourlyEmployeeTransaction;
 
 import java.util.Date;
 
@@ -19,7 +19,7 @@ public class TimeCardTransactionTest {
     public void testTransaction() {
         final int empId = 5;
 
-        AddHourlyEmployee t = new AddHourlyEmployee(empId, "Bill", "Home", 15.25);
+        AddHourlyEmployeeTransaction t = new AddHourlyEmployeeTransaction(empId, "Bill", "Home", 15.25);
         t.execute();
 
         TimeCardTransaction tct = new TimeCardTransaction(new Date(2005, 7, 31), 8.0, empId);

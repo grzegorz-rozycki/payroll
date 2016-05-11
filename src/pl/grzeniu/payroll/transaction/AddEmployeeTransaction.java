@@ -10,13 +10,13 @@ import pl.grzeniu.payroll.schedule.PaymentSchedule;
 /**
  * Created by Grzegorz Różycki on 09.05.16
  */
-public abstract class AddEmployee implements Transaction {
+public abstract class AddEmployeeTransaction implements Transaction {
     protected int empId;
     protected String empName;
     protected String empAddress;
 
 
-    public AddEmployee(int empId, String empName, String empAddress) {
+    public AddEmployeeTransaction(int empId, String empName, String empAddress) {
         this.empId = empId;
         this.empName = empName;
         this.empAddress = empAddress;

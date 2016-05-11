@@ -4,7 +4,7 @@ import org.junit.Test;
 import pl.grzeniu.payroll.classification.SalariedClassification;
 import pl.grzeniu.payroll.method.HoldMethod;
 import pl.grzeniu.payroll.schedule.MonthlySchedule;
-import pl.grzeniu.payroll.transaction.AddSalariedEmployee;
+import pl.grzeniu.payroll.transaction.AddSalariedEmployeeTransaction;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -18,7 +18,7 @@ public class AddSalariedEmployeeTest {
     @Test
     public void executeTest() {
         final int empId = 1;
-        final AddSalariedEmployee t = new AddSalariedEmployee(empId, "Bob", "Home", 1000.00);
+        final AddSalariedEmployeeTransaction t = new AddSalariedEmployeeTransaction(empId, "Bob", "Home", 1000.00);
 
         t.execute();
 

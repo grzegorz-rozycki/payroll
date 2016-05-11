@@ -8,11 +8,11 @@ import pl.grzeniu.payroll.schedule.PaymentSchedule;
 /**
  * Created by Grzegorz Różycki on 08.05.16
  */
-public class AddSalariedEmployee extends AddEmployee {
+public class AddSalariedEmployeeTransaction extends AddEmployeeTransaction {
     protected double salary = 0.0;
 
 
-    public AddSalariedEmployee(int empId, String empName, String empAddress, double salary) {
+    public AddSalariedEmployeeTransaction(int empId, String empName, String empAddress, double salary) {
         super(empId, empName, empAddress);
         this.salary = salary;
     }

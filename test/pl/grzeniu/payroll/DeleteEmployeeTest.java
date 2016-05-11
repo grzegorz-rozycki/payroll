@@ -1,7 +1,7 @@
 package pl.grzeniu.payroll;
 
 import org.junit.Test;
-import pl.grzeniu.payroll.transaction.AddCommissionedEmployee;
+import pl.grzeniu.payroll.transaction.AddCommissionedEmployeeTransaction;
 import pl.grzeniu.payroll.transaction.DeleteEmployee;
 import pl.grzeniu.payroll.transaction.Transaction;
 
@@ -17,7 +17,7 @@ public class DeleteEmployeeTest {
     public void executeTest() {
         final int empId = 4;
 
-        final Transaction t = new AddCommissionedEmployee(empId, "Bill", "Home", 2500, 3.2);
+        final Transaction t = new AddCommissionedEmployeeTransaction(empId, "Bill", "Home", 2500, 3.2);
         t.execute();
 
         Employee e = PayrollDatabase.getEmployee(empId);

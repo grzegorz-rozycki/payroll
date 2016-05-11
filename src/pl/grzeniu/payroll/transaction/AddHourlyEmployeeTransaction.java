@@ -8,10 +8,10 @@ import pl.grzeniu.payroll.schedule.WeeklySchedule;
 /**
  * Created by Grzegorz Różycki on 10.05.16
  */
-public class AddHourlyEmployee extends AddEmployee {
+public class AddHourlyEmployeeTransaction extends AddEmployeeTransaction {
     protected double hourlyRate = 0.0;
 
-    public AddHourlyEmployee(int empId, String empName, String empAddress, double hourlyRate) {
+    public AddHourlyEmployeeTransaction(int empId, String empName, String empAddress, double hourlyRate) {
         super(empId, empName, empAddress);
         this.hourlyRate = hourlyRate;
     }
