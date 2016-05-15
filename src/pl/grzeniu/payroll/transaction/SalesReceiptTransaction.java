@@ -1,5 +1,10 @@
 package pl.grzeniu.payroll.transaction;
 
+import pl.grzeniu.payroll.Employee;
+import pl.grzeniu.payroll.PayrollDatabase;
+import pl.grzeniu.payroll.classification.CommissionedClassification;
+import pl.grzeniu.payroll.classification.SalesReceipt;
+
 import java.util.Date;
 
 /**
@@ -19,6 +24,17 @@ public class SalesReceiptTransaction implements Transaction {
 
     @Override
     public void execute() {
+        final Employee employee = PayrollDatabase.getEmployee(empId);
 
+        if (employee == null) {
+            throw new InvalidOperationException("No such employee");
+        }
+
+        if (!(employee.classification instanceof CommissionedClassification)) {
+            throw new InvalidOperationException("Employee isn't commissioned");
+        }
+
+        final SalesReceipt receipt = new SalesReceipt(date, amount);
+        ((CommissionedClassification) employee.classification).addSalesReceipt(receipt);
     }
 }
