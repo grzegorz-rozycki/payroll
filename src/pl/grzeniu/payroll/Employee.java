@@ -14,6 +14,7 @@ public class Employee {
     public PaymentSchedule schedule;
     public PaymentClassification classification;
     public PaymentMethod method;
+    public UnionAffiliation affiliation;
 
 
     public Employee(int id, String name, String address) {

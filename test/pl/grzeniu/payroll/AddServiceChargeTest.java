@@ -2,9 +2,11 @@ package pl.grzeniu.payroll;
 
 import org.junit.Test;
 import pl.grzeniu.payroll.transaction.AddHourlyEmployeeTransaction;
+import pl.grzeniu.payroll.transaction.ServiceChargeTransaction;
 
 import java.util.Date;
 
+import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 
 /**
@@ -27,10 +29,10 @@ public class AddServiceChargeTest {
 
         PayrollDatabase.addUnionMember(memberId, e);
         final ServiceChargeTransaction sct = new ServiceChargeTransaction(memberId, new Date(2005, 8, 8), 12.95);
-        sct.rxecute();
+        sct.execute();
 
         final ServiceCharge sc = af.getServiceCharge(new Date(2005, 8, 8));
         assertNotNull(sc);
-        assertEquals(12.95, sc.smount, .001);
+        assertEquals(12.95, sc.amount, .001);
     }
 }
