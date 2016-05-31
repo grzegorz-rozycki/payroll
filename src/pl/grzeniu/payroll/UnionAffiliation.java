@@ -10,11 +10,9 @@ import java.util.Map;
 public class UnionAffiliation {
     protected Map<Date, ServiceCharge> chargeList = new HashMap<>();
 
-    public void addServiceCharge(Date date, ServiceCharge charge) {
+    public void addServiceCharge(Date date, double charge) {
         assert date != null;
-        assert charge != null;
-
-        chargeList.put(date, charge);
+        chargeList.put(date, new ServiceCharge(charge, date));
     }
 
     public ServiceCharge getServiceCharge(Date date) {
