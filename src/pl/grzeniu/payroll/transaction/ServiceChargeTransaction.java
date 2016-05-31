@@ -1,5 +1,9 @@
 package pl.grzeniu.payroll.transaction;
 
+import pl.grzeniu.payroll.Employee;
+import pl.grzeniu.payroll.PayrollDatabase;
+import pl.grzeniu.payroll.UnionAffiliation;
+
 import java.util.Date;
 
 /**
@@ -19,6 +23,17 @@ public class ServiceChargeTransaction implements Transaction {
 
     @Override
     public void execute() {
+        final Employee emp = PayrollDatabase.getUnionMember(memberId);
 
+        if (emp == null) {
+            throw new InvalidOperationException("No such union member");
+        }
+
+        if (!(emp.affiliation instanceof UnionAffiliation)) {
+            throw new InvalidOperationException("Employee has no union affiliation");
+        }
+
+        final UnionAffiliation ua = emp.affiliation;
+        ua.addServiceCharge(chargeDate, chargeAmount);
     }
 }
