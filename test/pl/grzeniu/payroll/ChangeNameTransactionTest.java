@@ -16,7 +16,7 @@ public class ChangeNameTransactionTest {
     public void executeTest() {
         final int empId = 2;
         (new AddHourlyEmployeeTransaction(empId, "Bill", "Home", 15.25)).execute();
-        (new ChangeNameTransaction()).execute();
+        (new ChangeNameTransaction(empId, "Bob")).execute();
         final Employee emp = PayrollDatabase.getEmployee(empId);
 
         assertNotNull("Employee with given id should exist", emp);
