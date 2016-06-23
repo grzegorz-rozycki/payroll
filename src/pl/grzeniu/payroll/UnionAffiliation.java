@@ -7,8 +7,9 @@ import java.util.Map;
 /**
  * Created by Grzegorz Różycki on 17.05.16
  */
-public class UnionAffiliation {
+public class UnionAffiliation extends Affiliation {
     protected Map<Date, ServiceCharge> chargeList = new HashMap<>();
+    protected double dues = 0.0;
 
     public void addServiceCharge(Date date, double charge) {
         assert date != null;

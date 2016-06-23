@@ -33,7 +33,7 @@ public class ServiceChargeTransaction implements Transaction {
             throw new InvalidOperationException("Employee has no union affiliation");
         }
 
-        final UnionAffiliation ua = emp.affiliation;
+        final UnionAffiliation ua = (UnionAffiliation) emp.affiliation;
         ua.addServiceCharge(chargeDate, chargeAmount);
     }
 }
