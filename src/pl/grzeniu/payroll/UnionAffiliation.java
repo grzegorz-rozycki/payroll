@@ -11,6 +11,15 @@ public class UnionAffiliation extends Affiliation {
     protected Map<Date, ServiceCharge> chargeList = new HashMap<>();
     protected double dues = 0.0;
 
+    public UnionAffiliation(double dues) {
+        super();
+        this.dues = dues;
+    }
+
+    public UnionAffiliation() {
+        super();
+    }
+
     public void addServiceCharge(Date date, double charge) {
         assert date != null;
         chargeList.put(date, new ServiceCharge(charge, date));
