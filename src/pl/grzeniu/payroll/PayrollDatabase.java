@@ -33,4 +33,10 @@ public class PayrollDatabase {
 
         return (empId != null ? employees.get(empId) : null);
     }
+
+    public static void deleteUnionMember(int unionId) {
+        unionMembers.remove(unionId);
+    }
+
+
 }
