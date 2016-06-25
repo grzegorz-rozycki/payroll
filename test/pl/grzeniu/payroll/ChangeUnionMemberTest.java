@@ -3,7 +3,9 @@ package pl.grzeniu.payroll;
 import org.junit.Test;
 import pl.grzeniu.payroll.transaction.AddHourlyEmployeeTransaction;
 import pl.grzeniu.payroll.transaction.ChangeMemberTransaction;
+import pl.grzeniu.payroll.transaction.ChangeUnaffiliatedTransaction;
 
+import static junit.framework.TestCase.assertNull;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
@@ -28,10 +30,14 @@ public class ChangeUnionMemberTest {
         assertTrue(affiliation instanceof UnionAffiliation);
 
         UnionAffiliation uf = (UnionAffiliation) affiliation;
-        assertEquals(99.42, uf.dues, .001);
+        assertEquals(99.42, uf.dues, 0.001);
 
         Employee member = PayrollDatabase.getUnionMember(memberId);
         assertNotNull(member);
         assertEquals(emp, member);
+
+        // remove affiliation from user
+        (new ChangeUnaffiliatedTransaction(empId, memberId)).execute();
+        assertNull(PayrollDatabase.getUnionMember(memberId));
     }
 }
