@@ -2,6 +2,7 @@ package pl.grzeniu.payroll;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.WeakHashMap;
 
 /**
@@ -22,6 +23,10 @@ public class PayrollDatabase {
 
     public static void deleteEmployee(int id) {
         employees.remove(id);
+    }
+
+    public static Set<Integer> getAllEmployeeIds() {
+        return employees.keySet();
     }
 
     public static void addUnionMember(int unionId, Employee employee) {
