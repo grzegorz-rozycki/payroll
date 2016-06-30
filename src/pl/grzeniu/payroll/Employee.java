@@ -4,6 +4,8 @@ import pl.grzeniu.payroll.classification.PaymentClassification;
 import pl.grzeniu.payroll.method.PaymentMethod;
 import pl.grzeniu.payroll.schedule.PaymentSchedule;
 
+import java.util.Date;
+
 /**
  * Created by Grzegorz Różycki on 09.05.16
  */
@@ -21,5 +23,13 @@ public class Employee {
         this.id = id;
         this.name = name;
         this.address = address;
+    }
+
+    public boolean isPayDate(Date date) {
+        return this.schedule.isPayDate(date);
+    }
+
+    public void payday(Paycheck paycheck) {
+
     }
 }
