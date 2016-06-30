@@ -15,6 +15,10 @@ public class Paycheck {
     public Map<String, String> fields = new HashMap<>();
 
 
+    public Paycheck(Date payDate) {
+        this.payDate = payDate;
+    }
+
     public String getField(String fieldName) {
         return fields.get(fieldName);
     }
