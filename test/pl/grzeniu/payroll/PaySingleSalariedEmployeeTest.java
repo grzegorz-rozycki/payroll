@@ -16,7 +16,7 @@ public class PaySingleSalariedEmployeeTest {
     @Test
     public void payTest() {
         final int empId = 1;
-        final Date payDate = new Date(2001, 11, 30);
+        final Date payDate = new Date(2001, 11, 31);
 
         (new AddSalariedEmployeeTransaction(empId, "Bob", "Home", 1000.00)).execute();
 
