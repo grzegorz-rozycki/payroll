@@ -23,6 +23,7 @@ public class Employee {
         this.id = id;
         this.name = name;
         this.address = address;
+        this.affiliation = new NoAffiliation();
     }
 
     public boolean isPayDate(Date date) {
@@ -30,6 +31,12 @@ public class Employee {
     }
 
     public void payday(Paycheck paycheck) {
-
+        final double grossPay = classification.calculatePay(paycheck);
+        final double deductions = affiliation.calculateDeductions(paycheck);
+        final double netPay = grossPay - deductions;
+        paycheck.grossPay = grossPay;
+        paycheck.deductions = deductions;
+        paycheck.netPay = netPay;
+        method.pay(paycheck);
     }
 }
