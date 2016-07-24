@@ -22,4 +22,8 @@ public class Paycheck {
     public String getField(String fieldName) {
         return fields.get(fieldName);
     }
+
+    public void setField(String field, String value) {
+        fields.put(field, value);
+    }
 }

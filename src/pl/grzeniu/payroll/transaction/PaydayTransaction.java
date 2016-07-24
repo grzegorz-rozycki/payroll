@@ -28,7 +28,7 @@ public class PaydayTransaction implements Transaction {
             final Employee employee = PayrollDatabase.getEmployee(empId);
 
             if (employee.isPayDate(payDate)) {
-                Paycheck pc = new Paycheck(payDate);
+                final Paycheck pc = new Paycheck(payDate);
                 paychecks.put(empId, pc);
                 employee.payday(pc);
             }
@@ -36,6 +36,6 @@ public class PaydayTransaction implements Transaction {
     }
 
     public Paycheck getPaycheck(final int employeeId) {
-        return null;
+        return paychecks.get(employeeId);
     }
 }
