@@ -7,9 +7,7 @@ import pl.grzeniu.payroll.transaction.TimeCardTransaction;
 
 import java.util.Date;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 /**
  * Created by grzechu on 03.07.16.
@@ -64,6 +62,37 @@ public class PaySingleHourlyEmployeeTest {
         pt.execute();
         Paycheck pc = pt.getPaycheck(empId);
         assertNull(pc);
+    }
+
+    @Test
+    public void testPayTwoTimeCards() {
+        final int empId = 2;
+
+        (new AddHourlyEmployeeTransaction(empId, "Bill", "Home", 15.25)).execute();
+        final Date payDate1 = new Date(2001, 11, 9); // Friday
+        final Date payDate2 = new Date(2001, 11, 8); // Thursday
+
+        (new TimeCardTransaction(empId, payDate1, 2.0)).execute();
+        (new TimeCardTransaction(empId, payDate2, 5.0)).execute();
+
+        final PaydayTransaction pt = new PaydayTransaction(payDate1);
+        pt.execute();
+
+        validateHourlyPaycheck(pt, empId, payDate1, 7 * 15.25);
+    }
+
+    @Test
+    public void testPayWithTimeCardsSpanningTwoPayPeriods() {
+        final int empId = 2;
+        (new AddHourlyEmployeeTransaction(empId, "Bill", "Home", 15.25)).execute();
+        final Date payDate = new Date(2001, 11, 9); // Friday
+        final Date dateInPreviousPayPeriod = new Date(2001, 11, 2);
+        (new TimeCardTransaction(empId, payDate, 2.0)).execute();
+        (new TimeCardTransaction(empId, dateInPreviousPayPeriod, 5.0)).execute();
+
+        final PaydayTransaction pt = new PaydayTransaction(payDate);
+        pt.execute();
+        validateHourlyPaycheck(pt, empId, payDate, 2 * 15.25);
     }
 
     private void validateHourlyPaycheck(PaydayTransaction pt, int empId, Date payDate, double pay)
