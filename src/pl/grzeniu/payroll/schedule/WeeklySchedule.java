@@ -1,5 +1,6 @@
 package pl.grzeniu.payroll.schedule;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -8,6 +9,9 @@ import java.util.Date;
 public class WeeklySchedule extends PaymentSchedule {
     @Override
     public boolean isPayDate(Date date) {
-        return (date.getDay() == 5);
+        final Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+
+        return (Calendar.FRIDAY == calendar.get(Calendar.DAY_OF_WEEK));
     }
 }
