@@ -13,8 +13,8 @@ import java.util.Map;
  */
 public class PaydayTransaction implements Transaction {
 
-    protected final Date payDate;
-    protected final Map<Integer, Paycheck> paychecks;
+    private final Date payDate;
+    private final Map<Integer, Paycheck> paychecks;
 
     public PaydayTransaction(Date payDate) {
         this.payDate = payDate;
