@@ -1,5 +1,6 @@
 package pl.grzeniu.payroll.schedule;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -9,10 +10,13 @@ public class MonthlySchedule extends PaymentSchedule {
 
     @Override
     public boolean isPayDate(Date date) {
-        final Date date2 = new Date(date.getTime());
-        date2.setDate(date.getDate() + 1);
-        final int month1 = date.getMonth();
-        final int month2 = date2.getMonth();
+        final Calendar calendar = Calendar.getInstance();
+        int month1, month2;
+
+        calendar.setTime(date);
+        month1 = calendar.get(Calendar.MONTH);
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
+        month2 = calendar.get(Calendar.MONTH);
 
         return (month1 != month2);
     }
