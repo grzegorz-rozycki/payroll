@@ -30,6 +30,10 @@ public class Employee {
         return this.schedule.isPayDate(date);
     }
 
+    public Date getPayPeriodStartDate(Date payDate) {
+        return schedule.getPayPeriodStart(payDate);
+    }
+
     public void payday(Paycheck paycheck) {
         final double grossPay = classification.calculatePay(paycheck);
         final double deductions = affiliation.calculateDeductions(paycheck);

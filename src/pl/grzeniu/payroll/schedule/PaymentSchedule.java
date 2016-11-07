@@ -10,4 +10,8 @@ public class PaymentSchedule {
     public boolean isPayDate(Date date) {
         return false;
     }
+
+    public Date getPayPeriodStart(final Date payDate) {
+        return payDate;
+    }
 }

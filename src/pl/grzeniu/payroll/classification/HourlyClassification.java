@@ -25,7 +25,7 @@ public class HourlyClassification extends PaymentClassification {
         double totalPay = 0.0;
 
         for (TimeCard card : timeCards.values()) {
-            if (isInPayPeriod(card, paycheck.payDate)) {
+            if (isInPayPeriod(card.date, paycheck)) {
                 totalPay += calculatePayForTimeCard(card);
             }
         }
@@ -39,16 +39,6 @@ public class HourlyClassification extends PaymentClassification {
 
     public TimeCard getTimeCard(Date date) {
         return timeCards.get(date.getTime());
-    }
-
-    protected boolean isInPayPeriod(TimeCard timeCard, Date payPeriodEnd) {
-        final Calendar cal = Calendar.getInstance();
-        cal.setTime(payPeriodEnd);
-        cal.add(Calendar.DATE, -5);
-        final Date payPeriodStart = cal.getTime();
-
-        return (timeCard.date.getTime() >= payPeriodStart.getTime()
-                && timeCard.date.getTime() <= payPeriodEnd.getTime());
     }
 
     protected double calculatePayForTimeCard(TimeCard timeCard) {

@@ -8,15 +8,17 @@ import java.util.Map;
  * Created by Grzegorz Różycki on 26.06.16.
  */
 public class Paycheck {
-    public Date payDate = null;
-    public double grossPay = 0.0;
-    public double netPay = 0.0;
-    public double deductions = 0.0;
-    public Map<String, String> fields = new HashMap<>();
+    public final Date payPeriodEnd;
+    public final Date payPeriodStart;
+    double grossPay = 0.0;
+    double netPay = 0.0;
+    double deductions = 0.0;
+    private Map<String, String> fields = new HashMap<>();
 
 
-    public Paycheck(Date payDate) {
-        this.payDate = payDate;
+    public Paycheck(final Date payPeriodStart, final Date payPeriodEnd) {
+        this.payPeriodStart = payPeriodStart;
+        this.payPeriodEnd = payPeriodEnd;
     }
 
     public String getField(String fieldName) {

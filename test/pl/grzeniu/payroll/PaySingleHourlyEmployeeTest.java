@@ -99,7 +99,7 @@ public class PaySingleHourlyEmployeeTest {
     {
         Paycheck pc = pt.getPaycheck(empId);
         assertNotNull("Paycheck should be assigned", pc);
-        assertEquals("Pay dates are equal", payDate, pc.payDate);
+        assertEquals("Pay dates are equal", payDate, pc.payPeriodEnd);
         assertEquals("Gross pay is equal", pay, pc.grossPay, .001);
         assertEquals("Pay disposition is set to Hold", "Hold", pc.getField("Disposition"));
         assertEquals("Deductions are zero", 0.0, pc.deductions, .001);

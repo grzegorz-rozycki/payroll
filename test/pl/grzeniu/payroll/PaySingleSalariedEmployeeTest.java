@@ -26,7 +26,7 @@ public class PaySingleSalariedEmployeeTest {
         final Paycheck pc = pt.getPaycheck(empId);
 
         assertNotNull("A paycheck for the given employee should be created", pc);
-        assertEquals("Pay dates should be equal", payDate, pc.payDate);
+        assertEquals("Pay dates should be equal", payDate, pc.payPeriodEnd);
         assertEquals("Gross pay should equal", 1000.00, pc.grossPay, .001);
         assertEquals("Disposition should be Hold", "Hold", pc.getField("Disposition"));
         assertEquals("Deductions should equal", 0.0, pc.deductions, .001);

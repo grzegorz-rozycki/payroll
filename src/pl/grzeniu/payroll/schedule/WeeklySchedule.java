@@ -14,4 +14,14 @@ public class WeeklySchedule extends PaymentSchedule {
 
         return (Calendar.FRIDAY == calendar.get(Calendar.DAY_OF_WEEK));
     }
+
+    @Override
+    public Date getPayPeriodStart(final Date payDate) {
+        // asserts that payDate is valid pay date
+        final Calendar calendar = Calendar.getInstance();
+        calendar.setTime(payDate);
+        calendar.add(Calendar.DATE, -5);
+
+        return calendar.getTime();
+    }
 }
