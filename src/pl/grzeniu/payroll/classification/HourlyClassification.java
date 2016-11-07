@@ -2,6 +2,7 @@ package pl.grzeniu.payroll.classification;
 
 import pl.grzeniu.payroll.Paycheck;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 import java.util.TreeMap;
@@ -40,13 +41,14 @@ public class HourlyClassification extends PaymentClassification {
         return timeCards.get(date.getTime());
     }
 
-    protected boolean isInPayPeriod(TimeCard timeCard, Date payPeriod) {
-        final Date payPeriodEndDate = payPeriod;
-        final Date payPeriodStartDate = ((Date) payPeriodEndDate.clone());
-        payPeriodStartDate.setDate(-5);
+    protected boolean isInPayPeriod(TimeCard timeCard, Date payPeriodEnd) {
+        final Calendar cal = Calendar.getInstance();
+        cal.setTime(payPeriodEnd);
+        cal.add(Calendar.DATE, -5);
+        final Date payPeriodStart = cal.getTime();
 
-        return (timeCard.date.getTime() >= payPeriodStartDate.getTime()
-                && timeCard.date.getTime() <= payPeriodEndDate.getTime());
+        return (timeCard.date.getTime() >= payPeriodStart.getTime()
+                && timeCard.date.getTime() <= payPeriodEnd.getTime());
     }
 
     protected double calculatePayForTimeCard(TimeCard timeCard) {
