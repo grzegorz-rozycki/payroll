@@ -28,7 +28,7 @@ public class UnionAffiliationPaymentsTest {
         assertEquals(payDate, pc.payPeriodEnd);
         assertEquals(8 * 15.24, pc.grossPay, 0.001);
         assertEquals("Hold", pc.getField("Disposition"));
-        assertEquals(9.42 + 19.42, pc.deductions, .001);
+        assertEquals(9.42 + 19.42, pc.deductions, 0.001);
         assertEquals((8 * 15.24) - (9.42 + 19.42), pc.netPay, 0.001);
     }
 
