@@ -13,7 +13,7 @@ public class UnionAffiliationPaymentsTest {
     public void hourlyUnionMemberServiceCharge() {
         final int empId = 1;
         final int memberId = 7734;
-        final Date payDate = DateHelper.makeDate(2001, 10, 9);
+        final Date payDate = DateUtil.makeDate(2001, 10, 9);
 
         (new AddHourlyEmployeeTransaction(empId, "Bill", "Home", 15.24)).execute();
         (new ChangeMemberTransaction(empId, memberId, 9.42)).execute();
@@ -36,9 +36,9 @@ public class UnionAffiliationPaymentsTest {
     public void serviceChargesSpanningMultiplePayPeriods() {
         final int empId = 1;
         final int memberId = 7734;
-        final Date payDate = DateHelper.makeDate(2001, 10, 9);
-        final Date earlyDate = DateHelper.makeDate(2001, 10, 2); // previous Friday
-        final Date lateDate = DateHelper.makeDate(2001, 10, 16); // next Friday
+        final Date payDate = DateUtil.makeDate(2001, 10, 9);
+        final Date earlyDate = DateUtil.makeDate(2001, 10, 2); // previous Friday
+        final Date lateDate = DateUtil.makeDate(2001, 10, 16); // next Friday
 
         (new AddHourlyEmployeeTransaction(empId, "Bill", "Home", 15.24)).execute();
         (new ChangeMemberTransaction(empId, memberId, 9.42)).execute();

@@ -36,7 +36,7 @@ public class UnionAffiliation extends Affiliation {
     @Override
     public double calculateDeductions(Paycheck paycheck) {
         // dues
-        final double d = dues * numberOfFridaysInPayPeriod(paycheck.payPeriodStart, paycheck.payPeriodEnd);
+        final double d = dues * DateUtil.numberOfFridaysInPayPeriod(paycheck.payPeriodStart, paycheck.payPeriodEnd);
         // charges
         final double c = calculateCharges(paycheck.payPeriodStart, paycheck.payPeriodEnd);
 
@@ -49,7 +49,7 @@ public class UnionAffiliation extends Affiliation {
         ServiceCharge sc = null;
         cal.setTime(payPeriodEnd);
 
-        for (int i = 0, n = daysBetween(payPeriodStart, payPeriodEnd); i < n; i += 1, cal.add(Calendar.DATE, -1)) {
+        for (int i = 0, n = DateUtil.daysBetween(payPeriodStart, payPeriodEnd); i < n; i += 1, cal.add(Calendar.DATE, -1)) {
             sc = getServiceCharge(cal.getTime());
 
             if (null != sc) {
@@ -58,26 +58,6 @@ public class UnionAffiliation extends Affiliation {
         }
 
         return charges;
-    }
-
-    private int numberOfFridaysInPayPeriod(Date payPeriodStart, Date payPeriodEnd) {
-        final Calendar cal = Calendar.getInstance();
-        final int days = daysBetween(payPeriodStart, payPeriodEnd);
-        int fridays = 0;
-
-        cal.setTime(payPeriodEnd);
-
-        for (int i = 0; i < days; i += 1, cal.add(Calendar.DATE, -1)) {
-            if (Calendar.FRIDAY == cal.get(Calendar.DAY_OF_WEEK)) {
-                fridays += 1;
-            }
-        }
-
-        return fridays;
-    }
-
-    private int daysBetween(Date payPeriodStart, Date payPeriodEnd) {
-        return (int)(payPeriodEnd.getTime() - payPeriodStart.getTime()) / 86400000;
     }
 
     private String dateToKey(Date date) {

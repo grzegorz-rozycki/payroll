@@ -12,9 +12,4 @@ public class PaymentClassification {
     public double calculatePay(Paycheck paycheck) {
         return 0.0;
     }
-
-    public boolean isInPayPeriod(final Date theDate, final Paycheck paycheck) {
-        return (theDate.getTime() >= paycheck.payPeriodStart.getTime()
-                && theDate.getTime() <= paycheck.payPeriodEnd.getTime());
-    }
 }

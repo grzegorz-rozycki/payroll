@@ -18,7 +18,7 @@ public class PaySingleHourlyEmployeeTest {
     public void testNoTimeCards()
     {
         final int empId = 2;
-        final Date payDate = DateHelper.makeDate(2011, 10, 11); // Friday → 2011-11-11
+        final Date payDate = DateUtil.makeDate(2011, 10, 11); // Friday → 2011-11-11
         (new AddHourlyEmployeeTransaction(empId, "Bill", "Home", 15.25)).execute();
         final PaydayTransaction pt = new PaydayTransaction(payDate);
         pt.execute();
@@ -29,7 +29,7 @@ public class PaySingleHourlyEmployeeTest {
     public void testOneTimeCard()
     {
         final int empId = 2;
-        final Date payDate = DateHelper.makeDate(2011, 10, 11); // Friday → 2011-11-11
+        final Date payDate = DateUtil.makeDate(2011, 10, 11); // Friday → 2011-11-11
         (new AddHourlyEmployeeTransaction(empId, "Bill", "Home", 15.25)).execute();
         (new TimeCardTransaction(empId, payDate, 2.0)).execute();
         final PaydayTransaction pt = new PaydayTransaction(payDate);
@@ -41,7 +41,7 @@ public class PaySingleHourlyEmployeeTest {
     public void testPayOvertimeOneTimeCard()
     {
         final int empId = 2;
-        final Date payDate = DateHelper.makeDate(2011, 10, 11); // Friday → 2011-11-11
+        final Date payDate = DateUtil.makeDate(2011, 10, 11); // Friday → 2011-11-11
         (new AddHourlyEmployeeTransaction(empId, "Bill", "Home", 15.25)).execute();
         (new TimeCardTransaction(empId, payDate, 9.0)).execute();
 
@@ -53,7 +53,7 @@ public class PaySingleHourlyEmployeeTest {
     @Test
     public void testPayOnWrongDate() {
         final int empId = 2;
-        final Date payDate = DateHelper.makeDate(2011, 10, 10); // Thursday → 2011-11-10
+        final Date payDate = DateUtil.makeDate(2011, 10, 10); // Thursday → 2011-11-10
 
         (new AddHourlyEmployeeTransaction(empId, "Bill", "Home", 15.25)).execute();
         (new TimeCardTransaction(empId, payDate, 9.0)).execute();
@@ -69,8 +69,8 @@ public class PaySingleHourlyEmployeeTest {
         final int empId = 2;
 
         (new AddHourlyEmployeeTransaction(empId, "Bill", "Home", 15.25)).execute();
-        final Date payDate1 = DateHelper.makeDate(2011, 10, 11); // Friday → 2011-11-11
-        final Date payDate2 = DateHelper.makeDate(2011, 10, 10); // Thursday → 2011-11-10
+        final Date payDate1 = DateUtil.makeDate(2011, 10, 11); // Friday → 2011-11-11
+        final Date payDate2 = DateUtil.makeDate(2011, 10, 10); // Thursday → 2011-11-10
 
         (new TimeCardTransaction(empId, payDate1, 2.0)).execute();
         (new TimeCardTransaction(empId, payDate2, 5.0)).execute();
@@ -85,8 +85,8 @@ public class PaySingleHourlyEmployeeTest {
     public void testPayWithTimeCardsSpanningTwoPayPeriods() {
         final int empId = 2;
         (new AddHourlyEmployeeTransaction(empId, "Bill", "Home", 15.25)).execute();
-        final Date payDate = DateHelper.makeDate(2011, 10, 11); // Friday → 2011-11-11
-        final Date dateInPreviousPayPeriod = DateHelper.makeDate(2011, 10, 4); // Friday → 2011-11-04
+        final Date payDate = DateUtil.makeDate(2011, 10, 11); // Friday → 2011-11-11
+        final Date dateInPreviousPayPeriod = DateUtil.makeDate(2011, 10, 4); // Friday → 2011-11-04
         (new TimeCardTransaction(empId, payDate, 2.0)).execute();
         (new TimeCardTransaction(empId, dateInPreviousPayPeriod, 5.0)).execute();
 

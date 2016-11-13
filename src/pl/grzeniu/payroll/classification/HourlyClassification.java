@@ -1,5 +1,6 @@
 package pl.grzeniu.payroll.classification;
 
+import pl.grzeniu.payroll.DateUtil;
 import pl.grzeniu.payroll.Paycheck;
 
 import java.util.Calendar;
@@ -25,7 +26,7 @@ public class HourlyClassification extends PaymentClassification {
         double totalPay = 0.0;
 
         for (TimeCard card : timeCards.values()) {
-            if (isInPayPeriod(card.date, paycheck)) {
+            if (DateUtil.isInPayPeriod(card.date, paycheck)) {
                 totalPay += calculatePayForTimeCard(card);
             }
         }
